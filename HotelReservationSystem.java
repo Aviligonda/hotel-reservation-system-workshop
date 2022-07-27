@@ -27,10 +27,9 @@ public class HotelReservationSystem {
         LocalDate endDateFormat = LocalDate.parse(endDate, DateTimeFormatter.ISO_DATE);
         int numberOfDays = endDateFormat.getDayOfMonth() - startDateFormat.getDayOfMonth();
         Hotel cheapestHotel = hotelList.stream()
-                .filter(n -> n.hotelRating > 3)
-                .min(Comparator.comparing(Hotel::getTotalRates))
+                .max(Comparator.comparing(Hotel::getTotalRates))
                 .orElse(null);
-        System.out.println("Cheapest Hotel is  :\n" + cheapestHotel);
+        System.out.println("Best Rated Hotel is  :\n" + cheapestHotel);
         int totalRate = numberOfDays * cheapestHotel.totalRates;
         System.out.println("Stay in Hotel " + numberOfDays + " days and \nTotal rent Rate is :" + totalRate);
     }
