@@ -9,6 +9,21 @@ public class Hotel {
         this.hotelRentRate = hotelRentRate;
     }
 
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public int getHotelRentRate() {
+        return hotelRentRate;
+    }
+
+    public void setHotelRentRate(int hotelRentRate) {
+        this.hotelRentRate = hotelRentRate;
+    }
 
     @Override
     public String toString() {
