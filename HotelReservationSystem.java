@@ -19,16 +19,5 @@ public class HotelReservationSystem {
         hotelList.add(hotelThree);
         hotelList.forEach(System.out::println);
         System.out.println("-----------------------------------");
-        cheapestHotel("2022-01-02", "2022-01-03");
-    }
-
-    public static void cheapestHotel(String startDate, String endDate) {
-        LocalDate startDateFormat = LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE);
-        LocalDate endDateFormat = LocalDate.parse(endDate, DateTimeFormatter.ISO_DATE);
-        int numberOfDays = endDateFormat.getDayOfMonth() - startDateFormat.getDayOfMonth() + 1;
-        Hotel cheapestHotel = hotelList.stream().min(Comparator.comparing(Hotel::getWeekDayRent)).orElse(null);
-        System.out.println("Cheapest Hotel is  :\n" + cheapestHotel);
-        int totalRate = numberOfDays * cheapestHotel.weekDayRent;
-        System.out.println("Stay in Hotel " + numberOfDays + " days and \nTotal rent Rate is :" + totalRate);
     }
 }
