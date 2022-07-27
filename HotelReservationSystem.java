@@ -32,16 +32,18 @@ public class HotelReservationSystem {
         specialList.add(hotel2);
         specialList.forEach(System.out::println);
         System.out.println("-----------------------------------");
+        cheapestHotel("2022-01-02", "2022-01-03");
     }
 
     public static void cheapestHotel(String startDate, String endDate) {
         LocalDate startDateFormat = LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE);
         LocalDate endDateFormat = LocalDate.parse(endDate, DateTimeFormatter.ISO_DATE);
         int numberOfDays = endDateFormat.getDayOfMonth() - startDateFormat.getDayOfMonth();
-        Hotel cheapestHotel = hotelList.stream()
-                .max(Comparator.comparing(Hotel::getTotalRates))
+        Hotel cheapestHotel = specialList.stream()
+                .filter(n -> n.hotelRating > 3)
+                .min(Comparator.comparing(Hotel::getTotalRates))
                 .orElse(null);
-        System.out.println("Best Rated Hotel is  :\n" + cheapestHotel);
+        System.out.println("Best Rated Hotel and Cheapest rentRate Hotel  :\n" + cheapestHotel);
         int totalRate = numberOfDays * cheapestHotel.totalRates;
         System.out.println("Stay in Hotel " + numberOfDays + " days and \nTotal rent Rate is :" + totalRate);
     }
