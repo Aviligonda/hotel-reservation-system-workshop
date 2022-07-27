@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HotelReservationSystem {
     static List<Hotel> hotelList = new ArrayList<>();
-    static LinkedList<Hotel> specialList=new LinkedList<>();
+    static LinkedList<Hotel> specialList = new LinkedList<>();
 
     public static void main(String[] args) {
         System.out.println("Welcome to Hotel Reservation System Program");
@@ -23,6 +23,7 @@ public class HotelReservationSystem {
         hotelList.forEach(System.out::println);
         System.out.println("---------------------------------------------------");
         System.out.println("Special Rates for Reward Customers is :  ");
+        System.out.println();
         Hotel hotel = new Hotel("LakeWood", 80, 80, 3);
         Hotel hotel1 = new Hotel("BridgeWood", 110, 50, 4);
         Hotel hotel2 = new Hotel("RidgeWood", 100, 40, 5);
