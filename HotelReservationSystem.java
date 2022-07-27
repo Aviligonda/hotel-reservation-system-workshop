@@ -11,9 +11,9 @@ public class HotelReservationSystem {
 
     public static void main(String[] args) {
         System.out.println("Welcome to Hotel Reservation System Program");
-        Hotel hotelOne = new Hotel("LakeWood", 110);
-        Hotel hotelTwo = new Hotel("BridgeWood", 150);
-        Hotel hotelThree = new Hotel("RidgeWood", 220);
+        Hotel hotelOne = new Hotel("LakeWood", 110, 90);
+        Hotel hotelTwo = new Hotel("BridgeWood", 150, 50);
+        Hotel hotelThree = new Hotel("RidgeWood", 220, 150);
         hotelList.add(hotelOne);
         hotelList.add(hotelTwo);
         hotelList.add(hotelThree);
@@ -26,9 +26,9 @@ public class HotelReservationSystem {
         LocalDate startDateFormat = LocalDate.parse(startDate, DateTimeFormatter.ISO_DATE);
         LocalDate endDateFormat = LocalDate.parse(endDate, DateTimeFormatter.ISO_DATE);
         int numberOfDays = endDateFormat.getDayOfMonth() - startDateFormat.getDayOfMonth() + 1;
-        Hotel cheapestHotel = hotelList.stream().min(Comparator.comparing(Hotel::getHotelRentRate)).orElse(null);
+        Hotel cheapestHotel = hotelList.stream().min(Comparator.comparing(Hotel::getWeekDayRent)).orElse(null);
         System.out.println("Cheapest Hotel is  :\n" + cheapestHotel);
-        int totalRate = numberOfDays * cheapestHotel.hotelRentRate;
+        int totalRate = numberOfDays * cheapestHotel.weekDayRent;
         System.out.println("Stay in Hotel " + numberOfDays + " days and \nTotal rent Rate is :" + totalRate);
     }
 }
